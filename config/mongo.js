@@ -8,7 +8,7 @@ const dbConnect = () => {
     },
     (err,res) => {
         if(!err){
-            console.log('Segun sol, se conecto')
+            console.log(' se conecto')
         } else {
             console.log('error')
         }

@@ -21,7 +21,7 @@ const registerController = async (req,res)=>{
     res.send({data})
 
     } catch(e){
-        handleHttpError(res, 'Error registrando el usuario')
+        handleHttpError(res, 'Ese email esta en uso')
     }
 
 }
