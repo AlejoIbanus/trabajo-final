@@ -1,15 +1,16 @@
 const jsonwebtoken = require('jsonwebtoken');
 const JWTSECRET = process.env.JWT_SECRET
-const tokenSign = async (user)=>{
+const tokenSign = async (user,time)=>{
     const sign = await jsonwebtoken.sign(
         {
         _id: user._id,
-        role: user.role
+        role: user.role,
+        
         
         },
         JWTSECRET,
         {
-            expiresIn:'2h',
+            expiresIn:time,
         }
         
     );

@@ -44,4 +44,27 @@ const validatorLoginItem = [
     }
 ];
 
-module.exports = {validatorRegisterItem, validatorLoginItem}
+const validatorRecoveryEmailItem = [
+    check('email')
+    .exists()
+    .notEmpty()
+    .isEmail(),
+
+    (req,res,next) => {
+        return validateResults(req,res,next)
+    }
+];
+
+const validatorReset = [
+    check('password')
+    .exists()
+    .notEmpty()
+    .isLength({min:3,max:15}),
+    
+
+    (req,res,next) => {
+        const token = req.params.token;
+        return validateResults(req,res,next)
+    }
+];
+module.exports = {validatorRegisterItem, validatorLoginItem, validatorRecoveryEmailItem, validatorReset}

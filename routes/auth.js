@@ -1,11 +1,15 @@
 const express = require('express');
-const { registerController, loginController } = require('../controllers/auth');
+const { registerController, loginController,RecoveryControllerEmail, resetController, savedNewPass} = require('../controllers/auth');
 const router = express.Router();
-const {validatorRegisterItem, validatorLoginItem} = require('../validators/auth')
+const {validatorRegisterItem, validatorLoginItem, validatorRecoveryEmailItem, validatorReset} = require('../validators/auth')
 // /api/auth
 
 router.post('/register', validatorRegisterItem,registerController )
 router.post('/login', validatorLoginItem,loginController )
+router.post('/forgotPassword', validatorRecoveryEmailItem, RecoveryControllerEmail )
+router.get('/reset/:token', resetController )
+router.post('/reset/:token', validatorReset, savedNewPass )
+
 
 
 
